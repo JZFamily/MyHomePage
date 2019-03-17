@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>苦丁</title>
+    <link rel="stylesheet" type="text/css" href="success.css">
+    <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.min.js">
+    </script>
+
+    <script>
+        var api={
+            "key": "90cf54c51d856f742cae038ad2c69105",
+            "info": "你好",
+            "loc":"北京市中关村",
+            "userid":"豆豆"
+        }
+
+        $(document).ready(function(){
+            $("button").click(function(){
+                api.info=$("#info").val();
+                $.post("http://www.tuling123.com/openapi/api?",api,function(data,status){
+
+                    //alert("data:"+data+"\nstaus:"+status);
+                    document.getElementById("test").innerHTML=data.text;
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+ <div id="container">
+     <div id="chat">
+         <div id="title">
+             <p>苦丁</p>
+         </div>
+         <div id="me">
+
+             <p><img src="me.jpg"width="60"height="60">：<input type="text" id="info"class="shuru" value=""> <button id="in">发送</button>
+         </div>
+         <div id="kd">
+             <p><img src="kd.jpg"width="60"height="60">:<br /></p>
+             <div id="dd">
+                 <p> &nbsp;&nbsp;<span id="test"></span><br /></P>
+             </div>
+         </div>
+     </div>
+
+ </div>
+    <script>
+        document.onkeydown(event)
+        {
+            if(event.keyCode == 13)
+            {
+                api.info=$("#info").val();
+                $.post("http://www.tuling123.com/openapi/api?",api,function(data,status){
+
+                    //alert("data:"+data+"\nstaus:"+status);
+                    document.getElementById("test").innerHTML=data.text;
+                });
+                console.log("onkeydown");
+            }
+        }
+    </script>
+</body>
+</html>
